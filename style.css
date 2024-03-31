@@ -1,0 +1,18 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: skyblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#board {
+    display: block;
+    width: 360px;
+    height: 640px;
+    background-color: white;
+    border: 2px solid black;
+}
