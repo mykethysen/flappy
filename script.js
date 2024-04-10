@@ -53,6 +53,7 @@ function initializeGame() {
     }
 
     board = document.getElementById("board");
+    console.log("Board element:", board); // Debugging statement
     board.height = boardHeight;
     board.width = boardWidth;
     context = board.getContext("2d");
@@ -65,23 +66,34 @@ function initializeGame() {
     score = 0;
 
     birdImg = new Image();
+    birdImg.onload = function() {
+        console.log("Bird image loaded"); // Debugging statement
+        animationId = requestAnimationFrame(update);
+    };
     birdImg.src = "photo-output.png";
 
     topPipeImg = new Image();
+    topPipeImg.onload = function() {
+        console.log("Top pipe image loaded"); // Debugging statement
+    };
     topPipeImg.src = "IMG-5346.png";
 
     bottomPipeImg = new Image();
+    bottomPipeImg.onload = function() {
+        console.log("Bottom pipe image loaded"); // Debugging statement
+    };
     bottomPipeImg.src = "IMG-5345.png";
 
     coinImg = new Image();
+    coinImg.onload = function() {
+        console.log("Coin image loaded"); // Debugging statement
+    };
     coinImg.src = "photo-output.jpg";
 
     if (pipeIntervalId) {
         clearInterval(pipeIntervalId);
     }
     pipeIntervalId = setInterval(placePipes, 1500);
-
-    animationId = requestAnimationFrame(update);
 }
 
 function update() {
