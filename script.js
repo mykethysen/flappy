@@ -135,6 +135,41 @@ function update() {
     context.fillText(score,5, 45);
 }
 
+function placePipes() {
+    let randomPipeY = pipeY - pipeHeight / 4 - Math.random() * (pipeHeight / 2);
+    let openingSpace = board.height / 4;
+    let topPipe = {
+        img: topPipeImg,
+        x: pipeX,
+        y: randomPipeY,
+        width: pipeWidth,
+        height: pipeHeight,
+        passed: false
+    };
+    pipeArray.push(topPipe);
+
+    let bottomPipe = {
+        img: bottomPipeImg,
+        x: pipeX,
+        y: randomPipeY + pipeHeight + openingSpace,
+        width: pipeWidth,
+        height: pipeHeight,
+        passed: false
+    };
+    pipeArray.push(bottomPipe);
+
+    let coinY = randomPipeY + pipeHeight + openingSpace / 2;
+    let coin = {
+        img: coinImg,
+        x: pipeX + 20,
+        y: coinY - 15,
+        width: 30,
+        height: 30,
+        collected: false
+    };
+    coinArray.push(coin);
+}
+
 function recordScore() {
     const currentDate = new Date().toLocaleDateString();
     const leaderboardEntry = { name: playerName, score: score, date: currentDate };
@@ -166,3 +201,5 @@ function populateLeaderboard() {
         leaderboardList.appendChild(listItem);
     }
 }
+
+// Remaining functions and code...
