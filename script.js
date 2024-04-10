@@ -39,6 +39,10 @@ window.onload = function() {
 
     // Populate the leaderboard
     populateLeaderboard();
+
+    // Attach event listeners
+    document.addEventListener("keydown", handleKeyPress);
+    board.addEventListener("click", handleJump);
 }
 
 function initializeGame() {
@@ -206,6 +210,16 @@ function showGameOver() {
     context.fillStyle = "black";
     context.font = "45px sans-serif";
     context.fillText("GAME OVER", boardWidth / 2 - context.measureText("GAME OVER").width / 2, boardHeight / 2);
+}
+
+function handleKeyPress(event) {
+    if (event.code === "Space" || event.code === "ArrowUp" || event.code === "KeyX") {
+        velocityY = -6;
+    }
+}
+
+function handleJump(event) {
+    velocityY = -6;
 }
 
 // Remaining functions and code...
