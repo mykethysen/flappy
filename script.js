@@ -39,7 +39,7 @@ window.onload = function() {
 
     // Populate the leaderboard
     populateLeaderboard();
-
+    
     // Attach event listeners
     document.addEventListener("keydown", handleKeyPress);
     board.addEventListener("click", handleJump);
