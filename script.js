@@ -32,6 +32,8 @@ let pipeIntervalId;
 let playerName = localStorage.getItem('playerName') || null; // Get player name from local storage or set to null
 
 window.onload = function() {
+    console.log("Window loaded"); // Debugging statement
+
     // Initialize the game
     initializeGame();
 
@@ -40,6 +42,8 @@ window.onload = function() {
 }
 
 function initializeGame() {
+    console.log("Initializing game"); // Debugging statement
+
     if (!playerName) {
         playerName = prompt("Please enter your name:"); // Prompt user for name if not set
         localStorage.setItem('playerName', playerName); // Save player name to local storage
@@ -162,5 +166,3 @@ function populateLeaderboard() {
         leaderboardList.appendChild(listItem);
     }
 }
-
-// Rest of the code remains unchanged...
