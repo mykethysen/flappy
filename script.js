@@ -202,4 +202,10 @@ function populateLeaderboard() {
     }
 }
 
+function showGameOver() {
+    context.fillStyle = "black";
+    context.font = "45px sans-serif";
+    context.fillText("GAME OVER", boardWidth / 2 - context.measureText("GAME OVER").width / 2, boardHeight / 2);
+}
+
 // Remaining functions and code...
