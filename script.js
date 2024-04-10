@@ -1,8 +1,7 @@
-let board = null;
+let board;
 let boardWidth = 360;
 let boardHeight = 640;
 let context;
-
 let birdWidth = 62;
 let birdHeight = 44;
 let birdX = boardWidth / 8;
@@ -31,11 +30,6 @@ let animationId;
 let pipeIntervalId;
 
 function initializeGame() {
-    board = document.getElementById("board");
-    board.height = boardHeight;
-    board.width = boardWidth;
-    context = board.getContext("2d");
-
     bird = { x: birdX, y: birdY, width: birdWidth, height: birdHeight };
     pipeArray = [];
     coinArray = [];
@@ -64,6 +58,11 @@ function initializeGame() {
 }
 
 window.onload = function() {
+    board = document.getElementById("board");
+    board.height = boardHeight;
+    board.width = boardWidth;
+    context = board.getContext("2d");
+
     initializeGame();
     document.addEventListener("keydown", moveBird);
     board.addEventListener("touchstart", handleTouch, false);
@@ -107,7 +106,7 @@ function update() {
             context.drawImage(coin.img, coin.x, coin.y, coin.width, coin.height);
 
             if (detectCollision(bird, coin)) {
-                score += 1;
+                // score += 1; // Linha removida para que as moedas não contem pontos.
                 coin.collected = true;
                 coinArray.splice(index, 1);
             }
@@ -119,13 +118,12 @@ function update() {
 
     context.fillStyle = "black";
     context.font = "45px sans-serif";
-    context.fillText(score, 5, 45);
+    context.fillText(score,5, 45);
 }
 
 function placePipes() {
     let randomPipeY = pipeY - pipeHeight / 4 - Math.random() * (pipeHeight / 2);
     let openingSpace = board.height / 4;
-
     let topPipe = {
         img: topPipeImg,
         x: pipeX,
@@ -191,10 +189,12 @@ function showGameOver() {
 }
 
 function detectCollision(bird, object) {
-    let birdLeft = bird.x;
-    let birdRight = bird.x + bird.width;
-    let birdTop = bird.y;
-    let birdBottom = bird.y + bird.height;
+    let buffer = 5; // Ajustando em 5 pixel para simular a aproximação de cerca de 1 milímetro
+
+    let birdLeft = bird.x + buffer;
+    let birdRight = bird.x + bird.width - buffer;
+    let birdTop = bird.y + buffer;
+    let birdBottom = bird.y + bird.height - buffer;
 
     let objectLeft = object.x;
     let objectRight = object.x + object.width;
@@ -203,6 +203,5 @@ function detectCollision(bird, object) {
 
     return birdRight > objectLeft &&
            birdLeft < objectRight &&
-           birdBottom > objectTop &&
-           birdTop < objectBottom;
-}
+           birdBottom >
+
