@@ -38,16 +38,16 @@ function initializeGame() {
     score = 0;
 
     birdImg = new Image();
-    birdImg.src = "https://i.ibb.co/FBjyhWH/photo-output.png";
+    birdImg.src = "photo-output.png";
 
     topPipeImg = new Image();
-    topPipeImg.src = "https://i.ibb.co/hdP1Brx/IMG-5346.png";
+    topPipeImg.src = "IMG-5346.png";
 
     bottomPipeImg = new Image();
-    bottomPipeImg.src = "https://i.ibb.co/MgvYFtC/IMG-5345.png";
+    bottomPipeImg.src = "IMG-5345.png";
 
     coinImg = new Image();
-    coinImg.src = "https://i.ibb.co/fG3296n/photo-output.jpg";
+    coinImg.src = "photo-output.jpg";
 
     if (pipeIntervalId) {
         clearInterval(pipeIntervalId);
@@ -203,5 +203,6 @@ function detectCollision(bird, object) {
 
     return birdRight > objectLeft &&
            birdLeft < objectRight &&
-           birdBottom >
-
+           birdBottom > objectTop &&
+           birdTop < objectBottom;
+}
