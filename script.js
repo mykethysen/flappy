@@ -40,8 +40,7 @@ window.onload = function() {
     // Populate the leaderboard
     populateLeaderboard();
     
-    // Attach event listeners
-    document.addEventListener("keydown", handleKeyPress);
+    // Attach event listener for mouse click or touch
     board.addEventListener("click", handleJump);
 }
 
@@ -212,13 +211,11 @@ function showGameOver() {
     context.fillText("GAME OVER", boardWidth / 2 - context.measureText("GAME OVER").width / 2, boardHeight / 2);
 }
 
-function handleKeyPress(event) {
-    if (event.code === "Space" || event.code === "ArrowUp" || event.code === "KeyX") {
-        velocityY = -6;
-    }
-}
-
 function handleJump(event) {
+    // Prevent default behavior to avoid scrolling
+    event.preventDefault();
+    
+    // Set velocity to make the bird jump
     velocityY = -6;
 }
 
