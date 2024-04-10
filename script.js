@@ -231,4 +231,23 @@ function handleJump(event) {
     velocityY = -6;
 }
 
+function detectCollision(bird, object) {
+    let buffer = 5; // Ajustando em 5 pixel para simular a aproximação de cerca de 1 milímetro
+
+    let birdLeft = bird.x + buffer;
+    let birdRight = bird.x + bird.width - buffer;
+    let birdTop = bird.y + buffer;
+    let birdBottom = bird.y + bird.height - buffer;
+
+    let objectLeft = object.x;
+    let objectRight = object.x + object.width;
+    let objectTop = object.y;
+    let objectBottom = object.y + object.height;
+
+    return birdRight > objectLeft &&
+           birdLeft < objectRight &&
+           birdBottom > objectTop &&
+           birdTop < objectBottom;
+}
+
 // Remaining functions and code...
