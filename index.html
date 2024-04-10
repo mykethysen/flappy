@@ -2,11 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flappy Bird Game</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Game Home</title>
+    <style>
+        /* Add your CSS styles here */
+        #leaderboard {
+            margin-top: 20px;
+        }
+        #leaderboard h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        #leaderboard-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        #leaderboard-list li {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 <body>
+    <h1>Welcome to the Game!</h1>
+    
+    <!-- Leaderboard Section -->
+    <section id="leaderboard">
+        <h2>Leaderboard</h2>
+        <ul id="leaderboard-list">
+            <!-- Leaderboard entries will be populated here dynamically -->
+        </ul>
+    </section>
+
+    <!-- Game Canvas -->
     <canvas id="board"></canvas>
+
+    <!-- Include your JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
